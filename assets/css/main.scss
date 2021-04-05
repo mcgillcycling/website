@@ -1,0 +1,22 @@
+---
+---
+
+$red: rgb(237, 27, 47);
+
+main {
+  height: 100vh;
+}
+
+.navbar-brand {
+  color: $red;
+}
+
+.nav-link {
+  &:not(.active) {
+    color: $red;
+  }
+
+  &.active {
+    background-color: $red !important;
+  }
+}

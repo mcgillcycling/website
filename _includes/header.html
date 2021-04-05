@@ -1,0 +1,21 @@
+<div class="container">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="{{ "/" | relative_url }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+      <span class="fs-4 navbar-brand">McGill Cycling</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      {%- assign default_paths = site.pages | map: "path" -%}
+      {%- assign page_paths = site.header_pages | default: default_paths -%}
+
+      <li class="nav-item"><a href="{{ "/" | relative_url }}" class="nav-link {% if page.url == "/" -%}active{%- endif -%}">Home</a></li>
+      {%- for path in page_paths -%}
+        {%- assign my_page = site.pages | where: "path", path | first -%}
+        {%- if my_page.title -%}
+        <li class="nav-item"><a href="{{ my_page.url | relative_url }}" class="nav-link {% if page.url == my_page.url -%}active{%- endif -%}">{{ my_page.title | escape }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+      <li class="nav-item"><a href="https://forum.mcgillcycling.com" class="nav-link">Forum</a></li>
+    </ul>
+  </header>
+</div>
